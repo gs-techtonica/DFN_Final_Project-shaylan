@@ -7,6 +7,7 @@ import styles from "./styles.module.scss";
 const Tasks = () => {
   const [tasks, setTasks] = React.useState([]);
   const { loading, apiClient } = useApi();
+  const [distance, setDistance] = React.useState([]);
 
   const loadTasks = React.useCallback(
     async () => setTasks(await apiClient.getTasks()),
@@ -14,17 +15,25 @@ const Tasks = () => {
   );
   const addTask = (task) => apiClient.addTask(task).then(loadTasks);
 
+  const loadDistance = React.useCallback(
+    async () => setDistance(await apiClient.getDistance()),
+    [apiClient],
+  );
+
   React.useEffect(() => {
-    !loading && loadTasks();
-  }, [loading, loadTasks]);
+    !loading && loadDistance();
+  }, [loading, loadDistance]);
 
   return loading ? null : (
     <section>
-      <TaskList {...{ tasks }} />
+      {/* <TaskList {...{ tasks }} /> */}
+      <Distance {...{ distance }} />
       <AddTask {...{ addTask }} />
     </section>
   );
 };
+
+const Distance = ({ distance }) => <div>{distance}</div>;
 
 const TaskList = ({ tasks }) => (
   <ul className={styles.list}>
