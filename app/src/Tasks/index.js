@@ -33,7 +33,7 @@ const Tasks = () => {
   );
 };
 
-const Distance = ({ distance }) => <div>{distance}</div>;
+const Distance = ({ distance }) => <div>{distance.duration}</div>;
 
 const TaskList = ({ tasks }) => (
   <ul className={styles.list}>
