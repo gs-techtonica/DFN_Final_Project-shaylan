@@ -21,6 +21,107 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: donation_event; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.donation_event (
+    id integer NOT NULL,
+    date date,
+    carrier_name character varying(200),
+    donation_site_name character varying(200),
+    product_type_id integer,
+    lbs integer
+);
+
+
+--
+-- Name: donation_event_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.donation_event_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: donation_event_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.donation_event_id_seq OWNED BY public.donation_event.id;
+
+
+--
+-- Name: donation_sites; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.donation_sites (
+    id integer NOT NULL,
+    name character varying(100),
+    address character varying(200),
+    city character varying(50),
+    state character varying(2),
+    zip character varying(50),
+    hours_of_operation character varying(50),
+    product_type_id integer
+);
+
+
+--
+-- Name: donation_sites_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.donation_sites_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: donation_sites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.donation_sites_id_seq OWNED BY public.donation_sites.id;
+
+
+--
+-- Name: product_type_id; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.product_type_id (
+    id integer NOT NULL,
+    shipper_name character varying(50),
+    description character varying(300)
+);
+
+
+--
+-- Name: product_type_id_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.product_type_id_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: product_type_id_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.product_type_id_id_seq OWNED BY public.product_type_id.id;
+
+
+--
 -- Name: tasks; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -80,10 +181,55 @@ ALTER TABLE public.users ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
+-- Name: donation_event id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.donation_event ALTER COLUMN id SET DEFAULT nextval('public.donation_event_id_seq'::regclass);
+
+
+--
+-- Name: donation_sites id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.donation_sites ALTER COLUMN id SET DEFAULT nextval('public.donation_sites_id_seq'::regclass);
+
+
+--
+-- Name: product_type_id id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.product_type_id ALTER COLUMN id SET DEFAULT nextval('public.product_type_id_id_seq'::regclass);
+
+
+--
 -- Name: tasks id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.tasks ALTER COLUMN id SET DEFAULT nextval('public.tasks_id_seq'::regclass);
+
+
+--
+-- Data for Name: donation_event; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.donation_event (id, date, carrier_name, donation_site_name, product_type_id, lbs) FROM stdin;
+\.
+
+
+--
+-- Data for Name: donation_sites; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.donation_sites (id, name, address, city, state, zip, hours_of_operation, product_type_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: product_type_id; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.product_type_id (id, shipper_name, description) FROM stdin;
+\.
 
 
 --
@@ -105,7 +251,31 @@ COPY public.tasks (id, name, user_id) FROM stdin;
 
 COPY public.users (id, given_name, family_name, picture, email, sub) FROM stdin;
 1	George	Song	https://lh3.googleusercontent.com/a-/AOh14GisMQBkZ6bxLA6L0p7EBnaPny8aK52UKRI2_tQIaw=s96-c	george@damacy.net	google-oauth2|111226858800048009044
+2	shaylan	hawthorne	https://lh3.googleusercontent.com/a/AATXAJwiLJO-BE179PO4QhXwo29Vk7Ldce1DIsVAyGW6=s96-c	shaylan.hawthorne@gmail.com	google-oauth2|115139311748500482374
+7	Shaylan	Hawthorne	https://s.gravatar.com/avatar/1f9a08c07e50889effbd3bf0c52cfdfd?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fsh.png	shaylan.hawthorne@gmail.com	auth0|6170a376fe39bb0069277aa3
+8	Test	Test	https://s.gravatar.com/avatar/1aedb8d9dc4751e229a335e371db8058?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Ftt.png	test@gmail.com	auth0|6170dc82ff86f6006a3bc6de
 \.
+
+
+--
+-- Name: donation_event_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.donation_event_id_seq', 1, false);
+
+
+--
+-- Name: donation_sites_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.donation_sites_id_seq', 1, false);
+
+
+--
+-- Name: product_type_id_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.product_type_id_id_seq', 1, false);
 
 
 --
@@ -119,7 +289,7 @@ SELECT pg_catalog.setval('public.tasks_id_seq', 6, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, true);
+SELECT pg_catalog.setval('public.users_id_seq', 16, true);
 
 
 --
