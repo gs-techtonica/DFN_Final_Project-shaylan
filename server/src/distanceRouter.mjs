@@ -13,7 +13,7 @@ distanceRouter.get("/", async (request, response) => {
     const travelMode = request.query.travelMode;
 
     //fetch all destinations and generates their address, puts it into one large string address+state+zipcode .join with %7C
-    fetch("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+origin+"&destinations=45.5152%2C-122.6784&mode='DRIVING'&key=AIzaSyBntKhFZyZmcgzjdCsQ-oCSQlc-6msIe6w")
+    fetch("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+origin+"&destinations=45.5152%2C-122.6784&mode='DRIVING'&key="+process.env.REACT_APP_GOOGLE_MAPS_API_KEY)
         .then((res) => res.json())
         .then((res) => {
             distance = res.rows[0].elements[0].distance.text; 
