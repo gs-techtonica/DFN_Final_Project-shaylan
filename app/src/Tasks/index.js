@@ -21,10 +21,13 @@ const Tasks = () => {
   return loading ? null : (
     <section>
       <TaskList {...{ tasks }} />
+      {/* <Distance {...{ distance }} /> */}
       <AddTask {...{ addTask }} />
     </section>
   );
 };
+
+// const Distance = ({ distance }) => <div>{distance.duration}</div>;
 
 const TaskList = ({ tasks }) => (
   <ul className={styles.list}>

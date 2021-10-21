@@ -7,6 +7,7 @@ const makeApi = (accessToken) => {
     getTasks: () => _get("/api/tasks"),
     addTask: (name) => _post("/api/tasks", { name }),
     addOrUpdateUser: (user) => _post("/api/users", { user }),
+    getDistance: (origin) => _get("/api/distance?origin=" + origin),
   };
 
   const _get = async (url) => (await _fetch(url)).json();
