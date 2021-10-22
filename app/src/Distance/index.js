@@ -2,19 +2,22 @@ import * as React from "react";
 
 import useApi from "../auth/useApi";
 
+import MapContainer from "./map";
+
 // import styles from "./styles.module.scss";
 
 const Distance = () => {
   const { loading, apiClient } = useApi();
   const [distance, setDistance] = React.useState([]);
   const [origin, setOrigin] = React.useState("");
+  console.log(distance);
 
   const loadDistance = async () =>
     setDistance(await apiClient.getDistance(origin));
 
-  React.useEffect(() => {
-    !loading && loadDistance();
-  }, [loading, loadDistance]);
+  //   React.useEffect(() => {
+  //     !loading && loadDistance();
+  //   }, [origin]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -40,9 +43,21 @@ const Distance = () => {
           value={origin}
         />
       </label>
-      <button>Add</button>
-      <div>{distance.duration}</div>
-      <div>{distance.distance}</div>
+      <button>Search</button>
+      <div>
+        {/* <MapContainer /> */}
+        {/* on backend before we return result, sort the array by distance. Front
+        end will show order. Return just first two indexes. */}
+        {/* google map react element pass addresses */}
+        {distance.map((element) => {
+          return (
+            <div>
+              {element.name},{element.address},{element.distance},
+              {element.duration}, {element.phone_number}
+            </div>
+          );
+        })}
+      </div>
     </form>
   );
 };
