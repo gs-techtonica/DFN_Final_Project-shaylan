@@ -30,7 +30,8 @@ CREATE TABLE public.donation_event (
     carrier_name character varying(200),
     donation_site_name character varying(200),
     product_type_id integer,
-    lbs integer
+    lbs integer,
+    product_owner character varying(50)
 );
 
 
@@ -213,7 +214,7 @@ ALTER TABLE ONLY public.tasks ALTER COLUMN id SET DEFAULT nextval('public.tasks_
 -- Data for Name: donation_event; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.donation_event (id, date, carrier_name, donation_site_name, product_type_id, lbs) FROM stdin;
+COPY public.donation_event (id, date, carrier_name, donation_site_name, product_type_id, lbs, product_owner) FROM stdin;
 \.
 
 
@@ -262,9 +263,9 @@ COPY public.tasks (id, name, user_id) FROM stdin;
 
 COPY public.users (id, given_name, family_name, picture, email, sub) FROM stdin;
 1	George	Song	https://lh3.googleusercontent.com/a-/AOh14GisMQBkZ6bxLA6L0p7EBnaPny8aK52UKRI2_tQIaw=s96-c	george@damacy.net	google-oauth2|111226858800048009044
+8	Test	Test	https://s.gravatar.com/avatar/1aedb8d9dc4751e229a335e371db8058?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Ftt.png	test@gmail.com	auth0|6170dc82ff86f6006a3bc6de
 2	shaylan	hawthorne	https://lh3.googleusercontent.com/a/AATXAJwiLJO-BE179PO4QhXwo29Vk7Ldce1DIsVAyGW6=s96-c	shaylan.hawthorne@gmail.com	google-oauth2|115139311748500482374
 7	Shaylan	Hawthorne	https://s.gravatar.com/avatar/1f9a08c07e50889effbd3bf0c52cfdfd?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fsh.png	shaylan.hawthorne@gmail.com	auth0|6170a376fe39bb0069277aa3
-8	Test	Test	https://s.gravatar.com/avatar/1aedb8d9dc4751e229a335e371db8058?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Ftt.png	test@gmail.com	auth0|6170dc82ff86f6006a3bc6de
 \.
 
 
@@ -300,7 +301,7 @@ SELECT pg_catalog.setval('public.tasks_id_seq', 6, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 65, true);
+SELECT pg_catalog.setval('public.users_id_seq', 98, true);
 
 
 --

@@ -10,7 +10,6 @@ const distanceRouter = express.Router();
 
 let destinations = await db.getDestinations() 
 let address_params = destinations.map((dest) => dest.address + " " + dest.city + "%2C"+ dest.state).join("%7C");
-console.log(address_params)
 
 
 distanceRouter.get("/", async (request, response) => {

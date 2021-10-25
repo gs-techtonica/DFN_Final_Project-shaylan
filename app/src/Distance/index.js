@@ -47,7 +47,7 @@ const Distance = () => {
         </label>
         <button>Search</button>
         <div className="mapcontainer">
-          <MapContainer address={addressforMap}/>
+          <MapContainer />
           {/* on backend before we return result, sort the array by distance. Front
         end will show order. Return just first two indexes. */}
           {/* google map react element pass addresses */}
