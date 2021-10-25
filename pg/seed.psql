@@ -222,8 +222,6 @@ COPY public.donation_event (id, date, carrier_name, donation_site_name, product_
 --
 
 COPY public.donation_sites (id, name, address, city, state, zip, hours_of_operation, product_type_id, phone_number) FROM stdin;
-1	Banks Food Pantry	3301 6th Ave S	Seattle	WA	98134	8:00 AM - 5:00 PM	2	\N
-2	Banks Food Pantry	415 1st Ave N	Seattle	WA	98109	6:00 AM - 2:00 PM	2	\N
 3	Willingly Good	1743 124th Ave NE	Bellevue	WA	98005	7:00 AM - 2:00 PM	1	555-987-1010
 4	Xcess Goods	922 E 11th St	Tacoma	WA	98421	9:00 AM - 4:00 PM	1	555-983-1012
 5	NW Shelter	6607 S 287th St	Federal Way	WA	98001	6:00 AM - 4:00 PM	1	555-982-1989
@@ -232,6 +230,8 @@ COPY public.donation_sites (id, name, address, city, state, zip, hours_of_operat
 8	Xcess Food	2006 196th St SW	Lynnwood	WA	98036	5:00 AM - 1:00 PM	2	555-721-1983
 9	Saving Grace	22901 Edmonds Way	Edmonds	WA	98020	4:00 AM - 2:00 PM	1	555-333-1933
 10	Hoppys Food Bank	8950 154th Ave NE	Redmond	WA	98052	6:00 AM - 3:00 PM	1	555-323-1933
+1	Banks Food Bank	3301 6th Ave S	Seattle	WA	98134	8:00 AM - 5:00 PM	2	555-721-2345
+2	Sound Food Bank	415 1st Ave N	Seattle	WA	98109	6:00 AM - 2:00 PM	2	555-989-5634
 \.
 
 
@@ -300,7 +300,7 @@ SELECT pg_catalog.setval('public.tasks_id_seq', 6, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 51, true);
+SELECT pg_catalog.setval('public.users_id_seq', 65, true);
 
 
 --

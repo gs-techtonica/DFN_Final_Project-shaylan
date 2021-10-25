@@ -1,0 +1,18 @@
+.homepagecontainer {
+    height: 500px;
+    width: 100%; 
+    background-color: lightgrey; 
+    display: flex;
+    flex-direction: row;
+}
+
+.mapcontainer {
+    display: flex; 
+    justify-content: flex-end;
+}
+
+.distanceresponse {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+} 

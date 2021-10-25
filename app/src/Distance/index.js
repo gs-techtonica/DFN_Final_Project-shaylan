@@ -2,6 +2,7 @@ import * as React from "react";
 
 import useApi from "../auth/useApi";
 
+import "./homepage.css";
 import MapContainer from "./map";
 
 // import styles from "./styles.module.scss";
@@ -35,30 +36,34 @@ const Distance = () => {
   // };
 
   return loading ? null : (
-    <form {...{ onSubmit }}>
-      <label>
-        Enter Current Address:{" "}
-        <input
-          onChange={(e) => setOrigin(e.currentTarget.value)}
-          value={origin}
-        />
-      </label>
-      <button>Search</button>
-      <div>
-        {/* <MapContainer /> */}
-        {/* on backend before we return result, sort the array by distance. Front
+    <div className="homepagecontainer">
+      <form {...{ onSubmit }}>
+        <label>
+          Enter Current Address:{" "}
+          <input
+            onChange={(e) => setOrigin(e.currentTarget.value)}
+            value={origin}
+          />
+        </label>
+        <button>Search</button>
+        <div className="mapcontainer">
+          <MapContainer />
+          {/* on backend before we return result, sort the array by distance. Front
         end will show order. Return just first two indexes. */}
-        {/* google map react element pass addresses */}
-        {distance.map((element) => {
-          return (
-            <div>
-              {element.name},{element.address},{element.distance},
-              {element.duration}, {element.phone_number}
-            </div>
-          );
-        })}
-      </div>
-    </form>
+          {/* google map react element pass addresses */}
+        </div>
+        <div className="distanceresponse">
+          {distance.map((element) => {
+            return (
+              <div>
+                {element.name},{element.address},{element.distance},
+                {element.duration}, {element.phone_number}
+              </div>
+            );
+          })}
+        </div>
+      </form>
+    </div>
   );
 };
 
