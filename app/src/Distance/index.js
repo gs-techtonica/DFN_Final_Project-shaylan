@@ -47,17 +47,25 @@ const Distance = () => {
         </label>
         <button>Search</button>
         <div className="mapcontainer">
-          <MapContainer />
+          <MapContainer address={addressforMap}/>
           {/* on backend before we return result, sort the array by distance. Front
         end will show order. Return just first two indexes. */}
           {/* google map react element pass addresses */}
         </div>
         <div className="distanceresponse">
-          {distance.map((element) => {
+          {distance.slice(0, 3).map((element) => {
+            let distanceMiles = (
+              element.distance.replace("km", "") * 0.621371
+            ).toFixed(2);
+            let addressforMap = element.address;
+            console.log(addressforMap);
             return (
-              <div>
-                {element.name},{element.address},{element.distance},
-                {element.duration}, {element.phone_number}
+              <div className="distancecard">
+                <h4>{element.name}</h4>
+                <p>
+                  {element.address},{element.duration}, {distanceMiles} miles,{" "}
+                  {element.phone_number},{" "}
+                </p>
               </div>
             );
           })}

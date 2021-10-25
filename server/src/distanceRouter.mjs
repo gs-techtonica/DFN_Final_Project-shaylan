@@ -37,6 +37,7 @@ distanceRouter.get("/", async (request, response) => {
                   duration: nav.duration.text
                 });
               });
+              results.sort((a, b) => (a.distance > b.distance) ? 1 : -1)
               response.json(results);
             })
             // distance = res.rows[0].elements[0].distance.text; 

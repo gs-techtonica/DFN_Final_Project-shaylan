@@ -16,3 +16,9 @@
     justify-content: flex-start;
     flex-direction: column;
 } 
+
+.distancecard {
+   padding: 2px 16px;
+   margin: 7px; 
+   background-color: white;
+}
