@@ -1,20 +1,20 @@
 import express from "express";
 
+import fetch from 'node-fetch';
 import * as db from "./db.mjs";
 
-const router = express.Router();
+const donationRouter = express.Router();
 
-// router.get("/", async (request, response) => {
-//   const tasks = await db.getTasks(request.user.sub);
-//   response.json(tasks);
-// });
-
-router.use(express.json());
-router.post("/", async (request, response) => {
-  const donation = await db.addDonation(request.body
-);
-  response.status(201).json(donation);
-  console.log(request.body)
+donationRouter.get("/", async (request, response) => {
+  const donations = await db.getDonations();
+  response.json(donations);
 });
 
-export default router;
+donationRouter.use(express.json());
+donationRouter.post("/", async (request, response) => {
+  const donation = await db.addDonation(request.body);
+  response.status(201).json(donation);
+  console.log(donation)
+});
+
+export default donationRouter;

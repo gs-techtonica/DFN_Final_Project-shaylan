@@ -11,7 +11,7 @@ const Donation = () => {
   // const [lbs, setPounds] = React.useState("");
   // const [date, setDate] = React.useState("");
 
-  const addDonation = (donation) => apiClient.addDonation(donation);
+  const addADonation = async (donation) => apiClient.addDonation(donation);
 
   //   const canAdd = carrier_name !== "";
 
@@ -27,7 +27,7 @@ const Donation = () => {
     } = form.elements;
 
     e.preventDefault();
-    addDonation({
+    addADonation({
       carrier_name,
       donation_site_name,
       product_owner,
@@ -62,7 +62,7 @@ const Donation = () => {
           Donation Site: <input type="text" name="donation_site_name" />
         </label>
         <label>
-          Product Owner Name: <input type="text" name="product_owner_name" />
+          Product Owner Name: <input type="text" name="product_owner" />
         </label>
         <label htmlFor="healthy">Product Type: </label>
         <select id="product_type_id" name="product_type_id">
