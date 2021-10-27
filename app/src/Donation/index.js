@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import "./donationform.css";
 import useApi from "../auth/useApi";
 
 const Donation = () => {
@@ -53,30 +54,32 @@ const Donation = () => {
   //   };
 
   return loading ? null : (
-    <div>
+    <div className="formpage">
       <form onSubmit={onSubmit}>
-        <label>
-          Carrier Name: <input type="integer" name="carrier_name" />
-        </label>
-        <label>
-          Donation Site: <input type="text" name="donation_site_name" />
-        </label>
-        <label>
-          Product Owner Name: <input type="text" name="product_owner" />
-        </label>
-        <label htmlFor="healthy">Product Type: </label>
-        <select id="product_type_id" name="product_type_id">
-          <option value="1">Food</option>
-          <option value="2">Consumer Packaged Goods</option>
-        </select>
-        <label>
-          Lbs of goods: <input type="integer" name="lbs" />
-        </label>
-        <label>
-          Date: <input type="date" name="date" />
-        </label>
+        <div className="formcontent">
+          <label>
+            Carrier Name: <input type="integer" name="carrier_name" />
+          </label>
+          <label>
+            Donation Site: <input type="text" name="donation_site_name" />
+          </label>
+          <label>
+            Product Owner Name: <input type="text" name="product_owner" />
+          </label>
+          <label htmlFor="healthy">Product Type: </label>
+          <select id="product_type_id" name="product_type_id">
+            <option value="1">Food</option>
+            <option value="2">Consumer Packaged Goods</option>
+          </select>
+          <label>
+            Lbs of goods: <input type="integer" name="lbs" />
+          </label>
+          <label>
+            Date: <input type="date" name="date" />
+          </label>
 
-        <button>Add</button>
+          <button>Add</button>
+        </div>
       </form>
     </div>
   );
