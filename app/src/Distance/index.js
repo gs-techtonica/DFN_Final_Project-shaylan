@@ -39,7 +39,7 @@ const Distance = () => {
     <div className="homepagecontainer">
       <form {...{ onSubmit }}>
         <label>
-          Enter Current Address:{" "}
+          Enter Current Address or Zipcode:{" "}
           <input
             onChange={(e) => setOrigin(e.currentTarget.value)}
             value={origin}
