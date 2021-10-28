@@ -12,6 +12,7 @@ export const getTasks = (sub) =>
   );
 
 export const getDestinations = () => db.any("SELECT * FROM donation_sites")
+export const getDonations = () => db.any("SELECT * FROM donation_event")
 
 export const addTask = (sub, name) =>
   db.one(
@@ -21,6 +22,8 @@ export const addTask = (sub, name) =>
     { sub, name },
   );
 
+export const addDonation = (donation) => db.one("INSERT INTO donation_event(carrier_name, donation_site_name, product_owner, product_type_id, lbs, date) VALUES(${carrier_name}, ${donation_site_name}, $<product_owner>, ${product_type_id}, ${lbs}, ${date}) RETURNING *", donation )
+// console.log("hello", donation)
 export const addOrUpdateUser = (user) =>
   db.one(
     `INSERT INTO users(given_name, family_name, picture, email, sub)

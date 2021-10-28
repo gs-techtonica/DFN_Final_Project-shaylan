@@ -1,13 +1,12 @@
 import * as React from "react";
 
-import { Routes, Route } from "react-router-dom";
+import { NavLink, Routes, Route } from "react-router-dom";
 
 import Distance from "../Distance";
-import Nav from "../Nav";
-import Tasks from "../Tasks";
+import Donation from "../Donation";
 import useApi from "../auth/useApi";
 import useAuth0 from "../auth/useAuth0";
-import { Protected } from "../auth/widgets";
+import { Login, Logout, Protected } from "../auth/widgets";
 
 import styles from "./styles.module.scss";
 
@@ -24,18 +23,33 @@ const App = () => {
   return (
     <>
       <header>
-        <Nav />
+        <nav className={styles.nav}>
+          <NavLink to="/" end>
+            Home
+          </NavLink>{" "}
+          | <NavLink to="donation">Make a Donation</NavLink> | <Auth />
+        </nav>
       </header>
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/dashboard"
-            element={<Protected component={Dashboard} />}
-          />
+          <Route path="/donation" element={<DonationForm />} />
         </Routes>
       </main>
     </>
+  );
+};
+
+const Auth = () => {
+  const { isAuthenticated, user } = useAuth0();
+
+  return isAuthenticated ? (
+    <>
+      <img src={user.picture} alt="" />
+      Hello, {user.given_name} <Logout />
+    </>
+  ) : (
+    <Login />
   );
 };
 
@@ -53,6 +67,12 @@ const Home = () => {
   );
 };
 
-const Dashboard = () => <h1>Dashboard</h1>;
+const DonationForm = () => {
+  return (
+    <>
+      <Donation />
+    </>
+  );
+};
 
 export default App;
