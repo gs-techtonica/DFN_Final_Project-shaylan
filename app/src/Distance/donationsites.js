@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import useApi from "../auth/useApi";
+import Row from "react-bootstrap/Row";
 
 import "./homepage.css";
 
@@ -17,6 +18,7 @@ const DonationSites = (props) => {
         let addressforMap = element.address;
         console.log(addressforMap);
         return (
+          <Row>
           <div className="distancecard">
             <h4>{element.name}</h4>
             <p>
@@ -24,6 +26,7 @@ const DonationSites = (props) => {
               {element.phone_number},{" "}
             </p>
           </div>
+          </Row>
         );
       })}
     </div>
