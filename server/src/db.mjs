@@ -11,6 +11,8 @@ export const getTasks = (sub) =>
     { sub },
   );
 
+export const getDestinations = () => db.any("SELECT * FROM donation_sites")
+
 export const addTask = (sub, name) =>
   db.one(
     `INSERT INTO tasks(user_id, name)

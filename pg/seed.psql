@@ -30,7 +30,8 @@ CREATE TABLE public.donation_event (
     carrier_name character varying(200),
     donation_site_name character varying(200),
     product_type_id integer,
-    lbs integer
+    lbs integer,
+    product_owner character varying(50)
 );
 
 
@@ -66,7 +67,10 @@ CREATE TABLE public.donation_sites (
     state character varying(2),
     zip character varying(50),
     hours_of_operation character varying(50),
-    product_type_id integer
+    product_type_id integer,
+    phone_number character varying(50),
+    latitude numeric,
+    longitude numeric
 );
 
 
@@ -212,7 +216,9 @@ ALTER TABLE ONLY public.tasks ALTER COLUMN id SET DEFAULT nextval('public.tasks_
 -- Data for Name: donation_event; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.donation_event (id, date, carrier_name, donation_site_name, product_type_id, lbs) FROM stdin;
+COPY public.donation_event (id, date, carrier_name, donation_site_name, product_type_id, lbs, product_owner) FROM stdin;
+2	2021-10-26	Rustys Trucking	Sound Food Bank	1	10000	Oroweat
+3	2021-10-25	Dynamite Freight	Banks Food Bank	1	8000	Heinz
 \.
 
 
@@ -220,7 +226,17 @@ COPY public.donation_event (id, date, carrier_name, donation_site_name, product_
 -- Data for Name: donation_sites; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.donation_sites (id, name, address, city, state, zip, hours_of_operation, product_type_id) FROM stdin;
+COPY public.donation_sites (id, name, address, city, state, zip, hours_of_operation, product_type_id, phone_number, latitude, longitude) FROM stdin;
+3	Willingly Good	1743 124th Ave NE	Bellevue	WA	98005	7:00 AM - 2:00 PM	1	555-987-1010	47.717940	-122.307220
+4	Xcess Goods	922 E 11th St	Tacoma	WA	98421	9:00 AM - 4:00 PM	1	555-983-1012	47.256770	-122.422330
+5	NW Shelter	6607 S 287th St	Federal Way	WA	98001	6:00 AM - 4:00 PM	1	555-982-1989	47.344520	-122.316950
+6	WA Community Home	6701 E Marginal Way S	Seattle	WA	98108	5:00 AM - 1:00 PM	1	555-782-1983	47.542170	-122.328050
+7	Salmon Food Bank 	555 Monster Road SW	Renton	WA	98057	5:00 AM - 1:00 PM	2	555-744-1983	47.47533	-122.24877
+8	Xcess Food	2006 196th St SW	Lynnwood	WA	98036	5:00 AM - 1:00 PM	2	555-721-1983	47.81915	-122.26082
+9	Saving Grace	22901 Edmonds Way	Edmonds	WA	98020	4:00 AM - 2:00 PM	1	555-333-1933	47.79178	-122.35834
+10	Hoppys Food Bank	8950 154th Ave NE	Redmond	WA	98052	6:00 AM - 3:00 PM	1	555-323-1933	47.68086	-122.13421
+1	Banks Food Bank	3301 6th Ave S	Seattle	WA	98134	8:00 AM - 5:00 PM	2	555-721-2345	47.57411	-122.32597
+2	Sound Food Bank	415 1st Ave N	Seattle	WA	98109	6:00 AM - 2:00 PM	2	555-989-5634	47.62299	-122.35543
 \.
 
 
@@ -261,14 +277,14 @@ COPY public.users (id, given_name, family_name, picture, email, sub) FROM stdin;
 -- Name: donation_event_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.donation_event_id_seq', 1, false);
+SELECT pg_catalog.setval('public.donation_event_id_seq', 3, true);
 
 
 --
 -- Name: donation_sites_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.donation_sites_id_seq', 1, false);
+SELECT pg_catalog.setval('public.donation_sites_id_seq', 10, true);
 
 
 --
@@ -289,7 +305,7 @@ SELECT pg_catalog.setval('public.tasks_id_seq', 6, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 16, true);
+SELECT pg_catalog.setval('public.users_id_seq', 164, true);
 
 
 --
