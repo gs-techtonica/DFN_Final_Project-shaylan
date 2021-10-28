@@ -7,12 +7,21 @@ const style = {
 };
 
 const MapContainer = (props) => {
+  console.log("hi", props.distance);
   return (
     <Map google={props.google} zoom={14} style={style}>
-      <Marker
-        name={"Dolores park"}
-        position={{ lat: 37.759703, lng: -122.428093 }}
-      />
+      {props.distance.slice(0, 3).map((element) => {
+        console.log("inside", element.latitude);
+        let latitude = element.latitude;
+        let longitude = element.longitude;
+        return (
+          <Marker
+            name={element.name}
+            position={{ lat: latitude, lng: longitude }}
+          />
+        );
+      })}
+      <Marker name={"test"} position={{ lat: 47.71794, lng: -122.30722 }} />
       {/* pass distance object as a prop from index.js and use lat: this.props.distance.lat and this.props.distance.lng */}
       {/* <InfoWindow onClose={this.onInfoWindowClose}>
           <div>
