@@ -25,13 +25,15 @@ distanceRouter.get("/", async (request, response) => {
         .then((res) => res.json())
         .then((res) => {
         res.rows[0].elements.map((nav, i) => { // i should tell which destination it relates to
-                let { id, name, address, city, phone_number } = destinations[i];
+                let { id, name, address, city, phone_number, latitude, longitude } = destinations[i];
                 results.push({
                   id,
                   name,
                   address,
                   city,
                   phone_number,
+                  latitude, 
+                  longitude,
                   distance: nav.distance.text,
                   duration: nav.duration.text
                 });
