@@ -29,9 +29,9 @@ const Distance = () => {
   };
 
   return loading ? null : (
-    <Container>
-      <div>
-        <div className="search">
+    <div class="container">
+      <div class="row">
+        <div className="search add-space">
           <form {...{ onSubmit }}>
             <label>
               Enter Current Address:{" "}
@@ -43,17 +43,21 @@ const Distance = () => {
             <button>Search</button>
           </form>
         </div>
-        <Row>
-          <Col>
-            <DonationSites distance={distance} />
-          </Col>
-
-          <Col>
-            <MapContainer distance={distance} />
-          </Col>
-        </Row>
       </div>
-    </Container>
+      <div class="container">
+        <div class="row">
+          <div class="col align-items-center">
+            <div class="boxed-content">
+              <DonationSites distance={distance} />
+            </div>
+          </div>
+
+          <div class="col boxed-content">
+            <MapContainer distance={distance} />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

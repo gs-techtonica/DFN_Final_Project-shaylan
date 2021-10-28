@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <>
-      <header>
+      <header className="add-space">
         <nav className={styles.nav}>
           <NavLink to="/" end>
             Home
