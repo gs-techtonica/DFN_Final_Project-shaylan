@@ -75,7 +75,7 @@ const Donation = () => {
             Lbs of goods: <input type="integer" name="lbs" />
           </label>
           <label>
-            Date: <input type="date" name="date" />
+            Today's Date: <input type="date" name="date" />
           </label>
 
           <button>Add</button>
