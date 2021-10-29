@@ -1,7 +1,12 @@
+
 .add-space {
     margin: 30px
 }
 
+.search-row {
+    border: 3px black;
+    border-style: solid;
+}
 .boxed-content {
     border: 3px black;
     border-style: solid;
@@ -12,4 +17,55 @@
     margin-bottom: 0px;
     margin-right: 0px;
     margin-left: 0px
+}
+
+.left {
+    margin-left: -15px;
+}
+
+.right {
+    margin-right: -15px 
+}
+
+.form {
+    position: relative
+}
+
+.form .fa-search {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #9ca3af
+}
+
+.form span {
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #d1d5db
+}
+
+.left-pan {
+    padding-left: 7px
+}
+
+.left-pan i {
+    padding-left: 10px
+}
+
+.form-input {
+    height: 55px;
+    text-indent: 33px;
+    border-radius: 10px
+}
+
+.form-input:focus {
+    box-shadow: none;
+    border: none
+}
+
+.padding-0 >.row {
+    padding-right:0;
+    padding-left:0;
 }

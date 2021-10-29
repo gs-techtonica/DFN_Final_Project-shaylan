@@ -7,8 +7,6 @@ import App from "./App";
 import AuthProvider from "./auth/AuthProvider";
 import reportWebVitals from "./reportWebVitals";
 
-import "./global.scss";
-
 ReactDOM.render(
   <React.StrictMode>
     <Router>

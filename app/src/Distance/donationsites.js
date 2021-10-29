@@ -22,7 +22,7 @@ const DonationSites = (props) => {
           let addressforMap = element.address;
           console.log(addressforMap);
           return (
-            <div class="row justify-content-center">
+            <div class="row my-3 justify-content-center">
               <div class="card" style={{ width: "16rem" }}>
                 <div className="distancecard">
                   <h5>{element.name}</h5>

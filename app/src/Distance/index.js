@@ -29,13 +29,20 @@ const Distance = () => {
   };
 
   return loading ? null : (
-    <div class="container">
-      <div class="row">
-        <div className="search add-space">
+    <div class="container-fluid">
+      <div class="row p-4 search-row">
+        <div
+          class="col-12 text-center"
+          class="form"
+          className="search add-space"
+        >
           <form {...{ onSubmit }}>
             <label>
-              Enter Current Address:{" "}
+              <i class="fas fa-search"></i>
               <input
+                type="text"
+                class="form-control form-input"
+                placeholder="Search Address or Zipcode..."
                 onChange={(e) => setOrigin(e.currentTarget.value)}
                 value={origin}
               />
@@ -44,15 +51,15 @@ const Distance = () => {
           </form>
         </div>
       </div>
-      <div class="container">
-        <div class="row">
-          <div class="col align-items-center">
-            <div class="boxed-content">
+      <div class="container-fluid px-0">
+        <div class="row no-gutters">
+          <div class="col-md-6 col-lg-6 col-xs-12 align-items-center padding-0">
+            <div class="left boxed-content">
               <DonationSites distance={distance} />
             </div>
           </div>
 
-          <div class="col boxed-content">
+          <div class="right col-md-6 col-lg-6 col-xs-12 boxed-content padding-0">
             <MapContainer distance={distance} />
           </div>
         </div>

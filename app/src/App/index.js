@@ -8,7 +8,7 @@ import useApi from "../auth/useApi";
 import useAuth0 from "../auth/useAuth0";
 import { Login, Logout, Protected } from "../auth/widgets";
 
-import styles from "./styles.module.scss";
+import "../global.css";
 
 const App = () => {
   const { isAuthenticated, user } = useAuth0();
@@ -23,11 +23,27 @@ const App = () => {
   return (
     <>
       <header className="add-space">
-        <nav className={styles.nav}>
-          <NavLink to="/" end>
-            Home
-          </NavLink>{" "}
-          | <NavLink to="donation">Make a Donation</NavLink> | <Auth />
+        <nav class="navbar navbar-expand-md navbar-light bg-light navbar-fixed-top">
+          <div class="container-fluid">
+            <Auth />{" "}
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarResponsive"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <NavLink to="/" end>
+                  Home
+                </NavLink>{" "}
+                | <NavLink to="donation"> Make a Donation</NavLink> | About Us |
+                Donations Tracker
+              </ul>
+            </div>
+          </div>
         </nav>
       </header>
       <main>

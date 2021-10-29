@@ -7,7 +7,6 @@ const style = {
 };
 
 const MapContainer = (props) => {
-  console.log("hi", props.distance);
   return (
     <Map google={props.google} zoom={14} style={style}>
       {props.distance.slice(0, 3).map((element) => {
