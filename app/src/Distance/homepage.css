@@ -65,7 +65,7 @@
     border: none
 }
 
-.padding-0 >.row {
-    padding-right:0;
-    padding-left:0;
-}
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+ }

@@ -38,28 +38,30 @@ const Distance = () => {
         >
           <form {...{ onSubmit }}>
             <label>
-              <i class="fas fa-search"></i>
-              <input
-                type="text"
-                class="form-control form-input"
-                placeholder="Search Address or Zipcode..."
-                onChange={(e) => setOrigin(e.currentTarget.value)}
-                value={origin}
-              />
+              <div class="form">
+                <i class="fa fa-search"></i>
+                <input
+                  type="text"
+                  class="form-control form-input"
+                  placeholder="Search Address or Zipcode..."
+                  onChange={(e) => setOrigin(e.currentTarget.value)}
+                  value={origin}
+                />
+              </div>
             </label>
             <button>Search</button>
           </form>
         </div>
       </div>
       <div class="container-fluid px-0">
-        <div class="row no-gutters">
-          <div class="col-md-6 col-lg-6 col-xs-12 align-items-center padding-0">
+        <div class="row no-gutters mx-0">
+          <div class="col-md-6 col-lg-6 col-xs-12 align-items-center nopadding">
             <div class="left boxed-content">
               <DonationSites distance={distance} />
             </div>
           </div>
 
-          <div class="right col-md-6 col-lg-6 col-xs-12 boxed-content padding-0">
+          <div class="right col-md-6 col-lg-6 col-xs-12 boxed-content nopadding">
             <MapContainer distance={distance} />
           </div>
         </div>
