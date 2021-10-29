@@ -1,7 +1,8 @@
 import * as React from "react";
 
-import useApi from "../auth/useApi";
 import Row from "react-bootstrap/Row";
+
+import useApi from "../auth/useApi";
 
 import "./homepage.css";
 
@@ -19,13 +20,13 @@ const DonationSites = (props) => {
         console.log(addressforMap);
         return (
           <Row>
-          <div className="distancecard">
-            <h4>{element.name}</h4>
-            <p>
-              {element.address},{element.duration}, {distanceMiles} miles,{" "}
-              {element.phone_number},{" "}
-            </p>
-          </div>
+            <div className="distancecard">
+              <h4>{element.name}</h4>
+              <p>
+                {element.address},{element.duration}, {distanceMiles} miles,{" "}
+                {element.phone_number},{" "}
+              </p>
+            </div>
           </Row>
         );
       })}
