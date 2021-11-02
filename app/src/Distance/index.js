@@ -24,6 +24,7 @@ const Distance = () => {
   };
 
   return loading ? null : (
+    //Row 2 - Search and Filter
     <div class="container-fluid">
       <div class="row p-4 search-row">
         <div
@@ -48,19 +49,22 @@ const Distance = () => {
           </form>
         </div>
       </div>
-      <div class="container-fluid px-0">
-        <div class="row no-gutters mx-0">
-          <div class="col-md-6 col-lg-6 col-xs-12 align-items-center nopadding">
-            <div class="left boxed-content">
-              <DonationSites distance={distance} />
+      {/* Row 3 - results and Map  */}
+      <section class="p-0">
+        <div class="container-fluid px-0">
+          <div class="row g-0">
+            <div class="col-md align-items-center nopadding">
+              <div class="left boxed-content">
+                <DonationSites distance={distance} />
+              </div>
+            </div>
+
+            <div class="right col-md-6 col-lg-6 col-xs-12 boxed-content nopadding">
+              <MapContainer distance={distance} />
             </div>
           </div>
-
-          <div class="right col-md-6 col-lg-6 col-xs-12 boxed-content nopadding">
-            <MapContainer distance={distance} />
-          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
