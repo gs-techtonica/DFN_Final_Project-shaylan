@@ -3,11 +3,6 @@ import * as React from "react";
 import "./homepage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-
 import useApi from "../auth/useApi";
 
 import DonationSites from "./donationsites";
@@ -47,9 +42,9 @@ const Distance = () => {
                   onChange={(e) => setOrigin(e.currentTarget.value)}
                   value={origin}
                 />
+                <button class="btn btn-primary">Search</button>
               </div>
             </label>
-            <button>Search</button>
           </form>
         </div>
       </div>

@@ -1,11 +1,5 @@
 import * as React from "react";
 
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/CloseButton";
-import Row from "react-bootstrap/Row";
-
-import useApi from "../auth/useApi";
-
 import "./homepage.css";
 
 // import styles from "./styles.module.scss";

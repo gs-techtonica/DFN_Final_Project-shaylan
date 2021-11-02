@@ -35,12 +35,18 @@ const App = () => {
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ml-auto">
-                <NavLink to="/" end>
-                  Home
-                </NavLink>{" "}
-                | <NavLink to="donation"> Make a Donation</NavLink> | About Us |
-                Donations Tracker
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                  <NavLink to="/" end>
+                    Home
+                  </NavLink>
+                </li>
+                <li class="nav-item">
+                  | <NavLink to="donation"> Make a Donation</NavLink>
+                </li>
+                <li class="nav-item">| About Us </li>
+                <li class="nav-item">| Donations Tracker</li>
+                <li class="nav-item">| FAQ </li>
               </ul>
             </div>
           </div>
