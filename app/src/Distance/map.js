@@ -8,11 +8,20 @@ const style = {
 
 const MapContainer = (props) => {
   return (
-    <Map google={props.google} zoom={14} style={style}>
+    <Map
+      google={props.google}
+      initialCenter={{
+        lat: 47.6062,
+        lng: -122.3321,
+      }}
+      zoom={15}
+      style={style}
+    >
       {props.distance.slice(0, 3).map((element) => {
         console.log("inside", element.latitude);
         let latitude = element.latitude;
         let longitude = element.longitude;
+
         return (
           <Marker
             name={element.name}
