@@ -2,8 +2,8 @@ import * as React from "react";
 
 const Filter = (props) => {
   return (
-    <form class="form-check">
-      <div>
+    <div>
+      <div class="form-check">
         <label class="form-check-label" for="inlineRadio1">
           Food
           <input
@@ -15,6 +15,8 @@ const Filter = (props) => {
             onChange={(e) => props.setCheckedProduct(e.currentTarget.value)}
           />
         </label>
+      </div>
+      <div class="form-check">
         <label class="form-check-label" for="inlineRadio2">
           Consumer Goods
           <input
@@ -27,7 +29,7 @@ const Filter = (props) => {
           />
         </label>
       </div>
-    </form>
+    </div>
   );
 };
 
