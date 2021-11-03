@@ -3,11 +3,6 @@ import * as React from "react";
 import "./homepage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-
 import useApi from "../auth/useApi";
 
 import DonationSites from "./donationsites";
@@ -29,31 +24,49 @@ const Distance = () => {
   };
 
   return loading ? null : (
-    <Container>
-      <div>
-        <div className="search">
-          <form {...{ onSubmit }}>
-            <label>
-              Enter Current Address:{" "}
-              <input
-                onChange={(e) => setOrigin(e.currentTarget.value)}
-                value={origin}
-              />
-            </label>
-            <button>Search</button>
-          </form>
+    //Row 2 - Search and Filter
+    <div class="container-fluid">
+      <div class="row p-4 search-row">
+        <div class="col text-center align-self-center px-10">
+          <div class="form">
+            <form {...{ onSubmit }}>
+              <label>
+                <div class="form">
+                  <i class="fa fa-search"></i>
+                  <input
+                    type="text"
+                    class="form-control form-input"
+                    placeholder="Search Address or Zipcode..."
+                    onChange={(e) => setOrigin(e.currentTarget.value)}
+                    value={origin}
+                  />
+                  <button class="btn btn-primary">Search</button>
+                </div>
+              </label>
+            </form>
+          </div>
         </div>
-        <Row>
-          <Col>
-            <DonationSites distance={distance} />
-          </Col>
-
-          <Col>
-            <MapContainer distance={distance} />
-          </Col>
-        </Row>
+        <div class="col text-center align-self-center px-10">
+          <h1>Filter</h1>
+        </div>
       </div>
-    </Container>
+      {/* Row 3 - results and Map  */}
+      <section class="p-0">
+        <div class="container-fluid px-0">
+          <div class="row g-0">
+            <div class="col-md align-items-center nopadding">
+              <div class="left boxed-content">
+                <DonationSites distance={distance} />
+              </div>
+            </div>
+
+            <div class="right col-md-6 col-lg-6 col-xs-12 boxed-content nopadding">
+              <MapContainer distance={distance} />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

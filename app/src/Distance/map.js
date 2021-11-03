@@ -2,18 +2,27 @@ import * as React from "react";
 
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 const style = {
-  width: "50%",
-  height: "50%",
+  width: "100%",
+  height: "100%",
+  borderRadius: "10px",
 };
 
 const MapContainer = (props) => {
-  console.log("hi", props.distance);
   return (
-    <Map google={props.google} zoom={14} style={style}>
+    <Map
+      google={props.google}
+      initialCenter={{
+        lat: 47.6062,
+        lng: -122.3321,
+      }}
+      zoom={15}
+      style={style}
+    >
       {props.distance.slice(0, 3).map((element) => {
         console.log("inside", element.latitude);
         let latitude = element.latitude;
         let longitude = element.longitude;
+
         return (
           <Marker
             name={element.name}
