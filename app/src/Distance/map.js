@@ -15,7 +15,7 @@ const MapContainer = (props) => {
         lat: 47.6062,
         lng: -122.3321,
       }}
-      zoom={15}
+      zoom={10}
       style={style}
     >
       {props.distance.slice(0, 3).map((element) => {
