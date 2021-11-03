@@ -27,26 +27,27 @@ const Distance = () => {
     //Row 2 - Search and Filter
     <div class="container-fluid">
       <div class="row p-4 search-row">
-        <div
-          class="col-12 text-center"
-          class="form"
-          className="search add-space"
-        >
-          <form {...{ onSubmit }}>
-            <label>
-              <div class="form">
-                <i class="fa fa-search"></i>
-                <input
-                  type="text"
-                  class="form-control form-input"
-                  placeholder="Search Address or Zipcode..."
-                  onChange={(e) => setOrigin(e.currentTarget.value)}
-                  value={origin}
-                />
-                <button class="btn btn-primary">Search</button>
-              </div>
-            </label>
-          </form>
+        <div class="col text-center align-self-center px-10">
+          <div class="form">
+            <form {...{ onSubmit }}>
+              <label>
+                <div class="form">
+                  <i class="fa fa-search"></i>
+                  <input
+                    type="text"
+                    class="form-control form-input"
+                    placeholder="Search Address or Zipcode..."
+                    onChange={(e) => setOrigin(e.currentTarget.value)}
+                    value={origin}
+                  />
+                  <button class="btn btn-primary">Search</button>
+                </div>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="col text-center align-self-center px-10">
+          <h1>Filter</h1>
         </div>
       </div>
       {/* Row 3 - results and Map  */}
