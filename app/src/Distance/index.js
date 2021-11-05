@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import useApi from "../auth/useApi";
 
 import DonationSites from "./donationsites";
+import Filter from "./filter";
 import MapContainer from "./map";
 
 // import styles from "./styles.module.scss";
@@ -14,6 +15,9 @@ const Distance = () => {
   const { loading, apiClient } = useApi();
   const [origin, setOrigin] = React.useState("");
   const [distance, setDistance] = React.useState([]);
+  const [checkedProduct, setCheckedProduct] = React.useState("");
+
+  console.log(checkedProduct);
 
   const loadDistance = async () =>
     setDistance(await apiClient.getDistance(origin));
@@ -47,7 +51,8 @@ const Distance = () => {
           </div>
         </div>
         <div class="col text-center align-self-center px-10">
-          <h1>Filter</h1>
+          <h4>Filter by Product Type</h4>
+          <Filter setCheckedProduct={setCheckedProduct} />
         </div>
       </div>
       {/* Row 3 - results and Map  */}
@@ -56,7 +61,10 @@ const Distance = () => {
           <div class="row g-0">
             <div class="col-md align-items-center nopadding">
               <div class="left boxed-content">
-                <DonationSites distance={distance} />
+                <DonationSites
+                  checkedProduct={checkedProduct}
+                  distance={distance}
+                />
               </div>
             </div>
 
